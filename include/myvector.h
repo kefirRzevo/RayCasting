@@ -1,8 +1,8 @@
 #ifndef MYVECTOR_H
 #define MYVECTOR_H
 
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 #include "config.h"
 
@@ -27,7 +27,7 @@ class Vector
         Vector(double anX, double anY, double anZ):
             x(anX), y(anY), z(anZ) {};
 
-       ~Vector()
+        ~Vector()
             {}
 
         void PrintVector()
@@ -45,7 +45,7 @@ class Vector
         double GetLen()
             { return std::sqrt(x*x+y*y+z*z); }
 
-        double GetLen2()
+        double GetSquareLen()
             { return x*x+y*y+z*z; }
 
         Vector& operator += (const Vector& v)
@@ -82,16 +82,24 @@ class Vector
         }
 
         friend Vector operator + (Vector v1, Vector v2)
-            { return Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z); }
+            { 
+                return Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z); 
+            }
 
         friend Vector operator - (Vector v1, Vector v2)
-            { return Vector(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z); }
+            {   
+                return Vector(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z); 
+            }
 
         friend Vector operator * (Vector v, double k)
-            { return Vector(v.x*k, v.y*k, v.z*k); }
+            { 
+                return Vector(v.x*k, v.y*k, v.z*k); 
+            }
 
         friend Vector operator * (double k, Vector v)
-            { return Vector(v.x*k, v.y*k, v.z*k); }
+            { 
+                return Vector(v.x*k, v.y*k, v.z*k); 
+            }
 
         friend Vector operator / (Vector v, double k)
             {
@@ -107,22 +115,29 @@ class Vector
             } 
 
         friend Vector VectorMul(Vector v1, Vector v2)
-            { return Vector(v1.y * v2.z - v1.z * v2.y, 
-                            v1.z * v2.x - v1.x * v2.z, 
-                            v1.x * v2.y - v1.y * v2.x); }
+            {   
+                return Vector(v1.y * v2.z - v1.z * v2.y, 
+                                v1.z * v2.x - v1.x * v2.z, 
+                                v1.x * v2.y - v1.y * v2.x); 
+            }
 
         friend Vector ComponentMul(Vector v1, Vector v2)
-            { return Vector(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z); } 
+            { 
+                return Vector(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z); 
+            } 
 
         friend double ScalarMul(Vector v1, Vector v2)
-            { return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z; }
+            { 
+                return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z; 
+            }
 
         friend double Cos(Vector v1, Vector v2)
             {
                 double len1 = v1.GetLen();
                 double len2 = v2.GetLen();
                 assert(len1 != 0 && len2 != 0);
-                return ScalarMul(v1, v2)/(len1*len2); }
+                return ScalarMul(v1, v2)/(len1*len2); 
+            }
 };
 
 #endif  //MYVECTOR_H

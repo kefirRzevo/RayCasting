@@ -42,8 +42,8 @@ TARGET = app
 	
 make: 
 	$(CXX) $(CXXFLAGS) -Ofast -c -o obj/main.o  main.cpp
-	$(CXX) $(CXXFLAGS) -Ofast -c -o obj/angem.o src/angem.cpp
-	$(CXX) -o $(TARGET) obj/main.o obj/angem.o -lsfml-graphics -lsfml-window -lsfml-system
+	$(CXX) $(CXXFLAGS) -Ofast -c -o obj/render.o src/render.cpp
+	$(CXX) -o $(TARGET) obj/main.o obj/render.o -lsfml-graphics -lsfml-window -lsfml-system
 	./$(TARGET)
 
 clean:
